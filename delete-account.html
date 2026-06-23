@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>طلب حذف الحساب والبيانات - توب ميديا | Account & Data Deletion Request - Top Media</title>
+  <!-- Google Fonts: Cairo for Arabic, Inter for English -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary: #117a45;
+      --primary-rgb: 17, 122, 69;
+      --primary-hover: #0c5b33;
+      --accent: #faae18;
+      --secondary: #006a80;
+      --bg: #f4f7f5;
+      --bg-gradient: linear-gradient(135deg, #f4f7f5 0%, #e8f5ee 100%);
+      --card-bg: rgba(255, 255, 255, 0.9);
+      --text-main: #1f2933;
+      --text-muted: #596675;
+      --border: rgba(17, 122, 69, 0.12);
+      --error: #e84d4f;
+      --success: #117a45;
+      --shadow-sm: 0 4px 10px rgba(0, 0, 0, 0.02);
+      --shadow-md: 0 10px 40px rgba(17, 122, 69, 0.08);
+      --radius: 16px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Reset and Base Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      background-image: var(--bg-gradient);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition);
+    }
+
+    /* Language Switcher CSS Show/Hide Rule */
+    body.lang-ar {
+      font-family: 'Cairo', Arial, sans-serif;
+    }
+    body.lang-en {
+      font-family: 'Inter', Arial, sans-serif;
+    }
+
+    body.lang-ar [lang="en"] { display: none !important; }
+    body.lang-en [lang="ar"] { display: none !important; }
+
+    /* Layout & Styling */
+    header {
+      background: white;
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .header-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .brand-logo {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      border-radius: 50%;
+      border: 2px solid var(--primary);
+      background: #e8f5ee;
+      padding: 4px;
+    }
+
+    .brand-title {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .lang-toggle-btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 14px;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 12px rgba(17, 122, 69, 0.2);
+    }
+
+    .lang-toggle-btn:hover {
+      background: var(--primary-hover);
+      transform: translateY(-2px);
+    }
+
+    main {
+      flex: 1;
+      width: 100%;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .hero-section {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .hero-section h1 {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .hero-section p {
+      color: var(--text-muted);
+      font-size: 16px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .grid-info {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 32px;
+    }
+
+    @media (max-width: 640px) {
+      .grid-info {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .info-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .info-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+    }
+
+    .info-card.delete::before {
+      background: var(--error);
+    }
+
+    .info-card.retain::before {
+      background: var(--accent);
+    }
+
+    .info-card h2 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .info-card.delete h2 { color: var(--error); }
+    .info-card.retain h2 { color: var(--secondary); }
+
+    .info-card ul {
+      list-style-type: none;
+    }
+
+    .info-card li {
+      margin-bottom: 10px;
+      font-size: 14px;
+      color: var(--text-muted);
+      position: relative;
+      padding-inline-start: 20px;
+      line-height: 1.6;
+    }
+
+    .info-card li::before {
+      content: "•";
+      position: absolute;
+      inset-inline-start: 0;
+      font-weight: bold;
+      font-size: 16px;
+    }
+    .info-card.delete li::before { color: var(--error); }
+    .info-card.retain li::before { color: var(--accent); }
+
+    .form-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 36px;
+      box-shadow: var(--shadow-md);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--text-main);
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid #d9dee5;
+      border-radius: 8px;
+      font-size: 15px;
+      transition: var(--transition);
+      background: white;
+      color: var(--text-main);
+    }
+
+    /* Support Dynamic RTL placeholder alignment */
+    body.lang-ar .form-group input,
+    body.lang-ar .form-group textarea {
+      direction: rtl;
+      text-align: right;
+    }
+    body.lang-en .form-group input,
+    body.lang-en .form-group textarea {
+      direction: ltr;
+      text-align: left;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(17, 122, 69, 0.12);
+      outline: none;
+    }
+
+    .form-group.error input,
+    .form-group.error textarea,
+    .form-group.error select {
+      border-color: var(--error);
+      background-color: #fffbfb;
+    }
+
+    .error-msg {
+      color: var(--error);
+      font-size: 12px;
+      margin-top: 6px;
+      display: none;
+      font-weight: 600;
+    }
+
+    .form-group.error .error-msg {
+      display: block;
+    }
+
+    .checkbox-group {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .checkbox-group input {
+      width: 20px;
+      height: 20px;
+      accent-color: var(--primary);
+      cursor: pointer;
+      margin-top: 2px;
+    }
+
+    .checkbox-group label {
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--text-main);
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 16px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 6px 18px rgba(17, 122, 69, 0.25);
+    }
+
+    .btn-submit:hover {
+      background: var(--primary-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(17, 122, 69, 0.3);
+    }
+
+    .btn-submit:active {
+      transform: translateY(0);
+    }
+
+    /* Success State View */
+    .success-container {
+      display: none;
+      text-align: center;
+      animation: fadeIn 0.5s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .success-icon {
+      width: 72px;
+      height: 72px;
+      background: #e8f5ee;
+      color: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      font-size: 36px;
+      box-shadow: 0 8px 20px rgba(17, 122, 69, 0.15);
+    }
+
+    .success-title {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 16px;
+    }
+
+    .success-description {
+      color: var(--text-muted);
+      font-size: 15px;
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+
+    .details-box {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 18px;
+      text-align: start;
+      margin-bottom: 28px;
+      font-family: inherit;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .details-item {
+      margin-bottom: 8px;
+      font-size: 14px;
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      border-bottom: 1px solid #f1f3f5;
+      padding-bottom: 8px;
+    }
+    .details-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+    .details-label {
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .details-val {
+      color: var(--text-muted);
+      word-break: break-all;
+    }
+
+    .action-buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 540px) {
+      .action-buttons {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .btn-secondary {
+      background: white;
+      color: var(--primary);
+      border: 1.5px solid var(--primary);
+      padding: 14px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-secondary:hover {
+      background: #e8f5ee;
+    }
+
+    .btn-email {
+      background: var(--secondary);
+      color: white;
+      border: none;
+      padding: 14px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 12px rgba(0, 106, 128, 0.2);
+    }
+
+    .btn-email:hover {
+      background: #005668;
+      transform: translateY(-2px);
+    }
+
+    .btn-reset {
+      background: transparent;
+      color: var(--text-muted);
+      border: none;
+      text-decoration: underline;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 500;
+      margin-top: 12px;
+      transition: var(--transition);
+    }
+    .btn-reset:hover {
+      color: var(--text-main);
+    }
+
+    footer {
+      background: white;
+      border-top: 1px solid var(--border);
+      padding: 24px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: auto;
+    }
+
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-divider {
+      margin: 0 10px;
+      color: #d9dee5;
+    }
+
+    /* Spinner */
+    .spinner {
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top-color: white;
+      animation: spin 0.8s ease-in-out infinite;
+      display: none;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .loading .spinner {
+      display: block;
+    }
+    .loading .btn-text {
+      display: none;
+    }
+  </style>
+</head>
+<body class="lang-ar" dir="rtl">
+
+  <header>
+    <div class="header-container">
+      <a href="index.html" class="brand">
+        <!-- We use an elegant SVG icon representation of the Gazelle/Antelope (الظبي) or App Icon -->
+        <svg class="brand-logo" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="46" fill="#117a45" fill-opacity="0.1" stroke="#117a45" stroke-width="3"/>
+          <path d="M38 60C38 45 42 32 50 30C54 28 58 35 56 40C52 48 48 55 48 60" stroke="#117a45" stroke-width="4" stroke-linecap="round"/>
+          <path d="M50 30C52 22 55 14 54 10C50 12 48 22 46 28" stroke="#1fa660" stroke-width="3" stroke-linecap="round"/>
+          <path d="M50 30C56 20 60 14 58 10C54 12 52 22 50 28" stroke="#faae18" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="50" cy="45" r="3" fill="#117a45"/>
+        </svg>
+        <span class="brand-title" lang="ar">توب ميديا</span>
+        <span class="brand-title" lang="en">Top Media</span>
+      </a>
+      
+      <button class="lang-toggle-btn" onclick="toggleLanguage()">
+        <span lang="ar">English</span>
+        <span lang="en">العربية</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero-section">
+      <h1 lang="ar">طلب حذف الحساب والبيانات</h1>
+      <h1 lang="en">Account & Data Deletion Request</h1>
+      
+      <p lang="ar">نحن نحترم خصوصيتك. إذا كنت ترغب في حذف حسابك في تطبيق توب ميديا، يرجى تعبئة النموذج أدناه وسيقوم فريق الدعم لدينا بمعالجة طلبك.</p>
+      <p lang="en">We respect your privacy. If you wish to delete your account in the Top Media App, please fill out the form below and our support team will process your request.</p>
+    </section>
+
+    <!-- Data Safety Info Section -->
+    <section class="grid-info">
+      <div class="info-card delete">
+        <h2 lang="ar">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16" style="margin-top:2px;">
+            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
+            <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
+          </svg>
+          البيانات التي سيتم حذفها
+        </h2>
+        <h2 lang="en">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16" style="margin-top:2px;">
+            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
+            <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
+          </svg>
+          Data That Will Be Deleted
+        </h2>
+        <ul>
+          <li lang="ar">معلومات الملف الشخصي (الاسم، والبريد الإلكتروني، والصورة الشخصية).</li>
+          <li lang="ar">بيانات تسجيل الدخول ورمز الجلسة الفعال.</li>
+          <li lang="ar">المنشآت والمواقع المسجلة.</li>
+          <li lang="ar">تقارير التفتيش وسجلات الامتثال.</li>
+          
+          <li lang="en">Profile details (name, email, and profile avatar).</li>
+          <li lang="en">Login credentials and active authentication tokens.</li>
+          <li lang="en">Registered facilities and locations.</li>
+          <li lang="en">Inspection reports and compliance records.</li>
+        </ul>
+      </div>
+
+      <div class="info-card retain">
+        <h2 lang="ar">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16" style="margin-top:2px;">
+            <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
+          </svg>
+          البيانات التي سيتم الاحتفاظ بها
+        </h2>
+        <h2 lang="en">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16" style="margin-top:2px;">
+            <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
+          </svg>
+          Data That Will Be Retained
+        </h2>
+        <ul>
+          <li lang="ar">سجلات المعاملات المالية (للامتثال للمتطلبات الضريبية والمحاسبية القانونية).</li>
+          <li lang="ar">سجل المراسلات وتذاكر الدعم السابقة لحل النزاعات.</li>
+          <li lang="ar">تقارير التفتيش السابقة التي يتطلب القانون الاحتفاظ بها.</li>
+          
+          <li lang="en">Financial transaction records (retained to comply with legal tax and accounting regulations).</li>
+          <li lang="en">Previous support tickets and chat transcripts for dispute resolution purposes.</li>
+          <li lang="en">Historical inspection reports required by law to be retained.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Request Form Section -->
+    <div class="form-container">
+      <form id="deletionForm" onsubmit="handleFormSubmit(event)">
+        
+        <div class="form-group" id="group-name">
+          <label for="input-name">
+            <span lang="ar">الاسم الكامل *</span>
+            <span lang="en">Full Name *</span>
+          </label>
+          <input type="text" id="input-name" required placeholder="مثال: أحمد محمد / e.g. John Doe">
+          <span class="error-msg" lang="ar">يرجى إدخال اسمك الكامل.</span>
+          <span class="error-msg" lang="en">Please enter your full name.</span>
+        </div>
+
+        <div class="form-group" id="group-phone">
+          <label for="input-phone">
+            <span lang="ar">رقم الهاتف المسجل *</span>
+            <span lang="en">Registered Phone Number *</span>
+          </label>
+          <input type="tel" id="input-phone" required placeholder="مثال: 967770000000+ / e.g. +967770000000">
+          <span class="error-msg" lang="ar">يرجى إدخال رقم الهاتف المسجل بشكل صحيح (مع رمز الدولة).</span>
+          <span class="error-msg" lang="en">Please enter a valid registered phone number (with country code).</span>
+        </div>
+
+        <div class="form-group" id="group-email">
+          <label for="input-email">
+            <span lang="ar">البريد الإلكتروني المسجل *</span>
+            <span lang="en">Registered Email *</span>
+          </label>
+          <input type="email" id="input-email" required placeholder="name@example.com">
+          <span class="error-msg" lang="ar">يرجى إدخال بريد إلكتروني صحيح.</span>
+          <span class="error-msg" lang="en">Please enter a valid email address.</span>
+        </div>
+
+        <div class="form-group">
+          <label for="select-reason">
+            <span lang="ar">سبب حذف الحساب (اختياري)</span>
+            <span lang="en">Reason for deletion (Optional)</span>
+          </label>
+          <select id="select-reason">
+            <option value="" lang="ar">-- اختر سبباً --</option>
+            <option value="" lang="en">-- Select a reason --</option>
+            
+            <option value="privacy" lang="ar">مخاوف تتعلق بالخصوصية</option>
+            <option value="privacy" lang="en">Privacy concerns</option>
+            
+            <option value="not_needed" lang="ar">لم أعد بحاجة للتطبيق</option>
+            <option value="not_needed" lang="en">I no longer need the app</option>
+            
+            <option value="errors" lang="ar">واجهت الكثير من المشاكل والأعطال</option>
+            <option value="errors" lang="en">Faced too many bugs/crashes</option>
+            
+            <option value="other" lang="ar">سبب آخر</option>
+            <option value="other" lang="en">Other reason</option>
+          </select>
+        </div>
+
+        <div class="form-group" id="group-reason-text" style="display: none;">
+          <label for="textarea-reason">
+            <span lang="ar">تفاصيل إضافية (اختياري)</span>
+            <span lang="en">Additional Details (Optional)</span>
+          </label>
+          <textarea id="textarea-reason" rows="3" placeholder="..."></textarea>
+        </div>
+
+        <div class="checkbox-group" id="group-confirm">
+          <input type="checkbox" id="checkbox-confirm" required>
+          <label for="checkbox-confirm">
+            <span lang="ar">أؤكد رغبتي في حذف حسابي نهائياً وجميع البيانات المرتبطة به. أنا أفهم أنه لا يمكن التراجع عن هذا الإجراء بمجرد اكتماله. *</span>
+            <span lang="en">I confirm that I wish to permanently delete my account and all associated data. I understand that this action is irreversible once completed. *</span>
+          </label>
+        </div>
+
+        <button type="submit" class="btn-submit" id="btn-submit">
+          <div class="spinner"></div>
+          <span class="btn-text" lang="ar">إرسال طلب الحذف</span>
+          <span class="btn-text" lang="en">Submit Deletion Request</span>
+        </button>
+
+      </form>
+
+      <!-- Success Container -->
+      <div class="success-container" id="successContainer">
+        <div class="success-icon">✓</div>
+        
+        <h2 class="success-title" lang="ar">تم إنشاء الطلب بنجاح</h2>
+        <h2 class="success-title" lang="en">Request Created Successfully</h2>
+        
+        <p class="success-description" lang="ar">
+          لقد قمنا بتوليد تفاصيل طلب الحذف الخاص بك. لإكمال تقديم الطلب، يرجى إرساله إلينا بالبريد الإلكتروني بالضغط على الزر أدناه، أو نسخ التفاصيل وإرسالها إلى فريق الدعم.
+        </p>
+        <p class="success-description" lang="en">
+          We have generated your deletion request details. To complete your submission, please send it to us via email by clicking the button below, or copy the details and send them to our support team.
+        </p>
+
+        <div class="details-box">
+          <div class="details-item">
+            <span class="details-label" lang="ar">الاسم:</span>
+            <span class="details-label" lang="en">Name:</span>
+            <span class="details-val" id="val-name"></span>
+          </div>
+          <div class="details-item">
+            <span class="details-label" lang="ar">رقم الهاتف:</span>
+            <span class="details-label" lang="en">Phone:</span>
+            <span class="details-val" id="val-phone"></span>
+          </div>
+          <div class="details-item">
+            <span class="details-label" lang="ar">البريد الإلكتروني:</span>
+            <span class="details-label" lang="en">Email:</span>
+            <span class="details-val" id="val-email"></span>
+          </div>
+          <div class="details-item">
+            <span class="details-label" lang="ar">سبب الحذف:</span>
+            <span class="details-label" lang="en">Reason:</span>
+            <span class="details-val" id="val-reason"></span>
+          </div>
+          <div class="details-item">
+            <span class="details-label" lang="ar">رقم المرجع:</span>
+            <span class="details-label" lang="en">Reference ID:</span>
+            <span class="details-val" id="val-ref"></span>
+          </div>
+        </div>
+
+        <div class="action-buttons">
+          <button class="btn-secondary" onclick="copyRequestDetails()">
+            <span lang="ar">نسخ تفاصيل الطلب</span>
+            <span lang="en">Copy Request Details</span>
+          </button>
+          
+          <button class="btn-email" onclick="sendEmailRequest()">
+            <span lang="ar">إرسال بالبريد الإلكتروني</span>
+            <span lang="en">Send via Email</span>
+          </button>
+        </div>
+
+        <button class="btn-reset" onclick="resetForm()">
+          <span lang="ar">تقديم طلب آخر</span>
+          <span lang="en">Submit another request</span>
+        </button>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>
+      &copy; 2026 <span lang="ar">تطبيق توب ميديا. جميع الحقوق محفوظة.</span><span lang="en">Top Media App. All rights reserved.</span>
+      <span class="footer-divider">|</span>
+      <a href="privacy-policy.html" target="_blank" lang="ar">سياسة الخصوصية</a>
+      <a href="privacy-policy.html" target="_blank" lang="en">Privacy Policy</a>
+    </p>
+  </footer>
+
+  <script>
+    // Initialize Language from preference
+    document.addEventListener('DOMContentLoaded', () => {
+      const savedLang = localStorage.getItem('preferred-language') || 'ar';
+      setLanguage(savedLang);
+
+      // Handle custom reason text area appearance
+      const selectReason = document.getElementById('select-reason');
+      const groupReasonText = document.getElementById('group-reason-text');
+      selectReason.addEventListener('change', () => {
+        if (selectReason.value === 'other') {
+          groupReasonText.style.display = 'block';
+        } else {
+          groupReasonText.style.display = 'none';
+        }
+      });
+    });
+
+    function setLanguage(lang) {
+      if (lang === 'ar') {
+        document.body.className = 'lang-ar';
+        document.body.dir = 'rtl';
+      } else {
+        document.body.className = 'lang-en';
+        document.body.dir = 'ltr';
+      }
+      localStorage.setItem('preferred-language', lang);
+    }
+
+    function toggleLanguage() {
+      const current = document.body.className === 'lang-ar' ? 'en' : 'ar';
+      setLanguage(current);
+    }
+
+    // Validation helpers
+    function validateEmail(email) {
+      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return re.test(email);
+    }
+
+    function validatePhone(phone) {
+      // Basic check for phone number (at least 7 digits)
+      const digits = phone.replace(/[^0-9]/g, '');
+      return digits.length >= 7;
+    }
+
+    let requestData = {};
+
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      
+      const nameEl = document.getElementById('input-name');
+      const phoneEl = document.getElementById('input-phone');
+      const emailEl = document.getElementById('input-email');
+      const reasonSelectEl = document.getElementById('select-reason');
+      const reasonTextEl = document.getElementById('textarea-reason');
+      const confirmEl = document.getElementById('checkbox-confirm');
+      
+      let isValid = true;
+
+      // Reset error styles
+      document.querySelectorAll('.form-group').forEach(g => g.classList.remove('error'));
+
+      // Validate Name
+      if (!nameEl.value.trim()) {
+        document.getElementById('group-name').classList.add('error');
+        isValid = false;
+      }
+
+      // Validate Phone
+      if (!phoneEl.value.trim() || !validatePhone(phoneEl.value)) {
+        document.getElementById('group-phone').classList.add('error');
+        isValid = false;
+      }
+
+      // Validate Email
+      if (!emailEl.value.trim() || !validateEmail(emailEl.value)) {
+        document.getElementById('group-email').classList.add('error');
+        isValid = false;
+      }
+
+      // Validate Checkbox
+      if (!confirmEl.checked) {
+        isValid = false;
+      }
+
+      if (!isValid) return;
+
+      // Show loader
+      const submitBtn = document.getElementById('btn-submit');
+      submitBtn.classList.add('loading');
+      submitBtn.disabled = true;
+
+      // Get reason text
+      let reasonText = reasonSelectEl.options[reasonSelectEl.selectedIndex].text;
+      if (reasonSelectEl.value === 'other' && reasonTextEl.value.trim()) {
+        reasonText += `: ${reasonTextEl.value.trim()}`;
+      } else if (!reasonSelectEl.value) {
+        reasonText = document.body.className === 'lang-ar' ? 'غير محدد' : 'Not specified';
+      }
+
+      // Generate Reference Number
+      const refNumber = 'TPM-' + Math.floor(100000 + Math.random() * 900000);
+
+      requestData = {
+        name: nameEl.value.trim(),
+        phone: phoneEl.value.trim(),
+        email: emailEl.value.trim(),
+        reason: reasonText,
+        ref: refNumber
+      };
+
+      // Simulate network request
+      setTimeout(() => {
+        submitBtn.classList.remove('loading');
+        submitBtn.disabled = false;
+        
+        // Hide form and show success container
+        document.getElementById('deletionForm').style.display = 'none';
+        
+        document.getElementById('val-name').textContent = requestData.name;
+        document.getElementById('val-phone').textContent = requestData.phone;
+        document.getElementById('val-email').textContent = requestData.email;
+        document.getElementById('val-reason').textContent = requestData.reason;
+        document.getElementById('val-ref').textContent = requestData.ref;
+        
+        document.getElementById('successContainer').style.display = 'block';
+      }, 1000);
+    }
+
+    function getFormattedText() {
+      const isAr = document.body.className === 'lang-ar';
+      if (isAr) {
+        return `طلب حذف حساب مستخدم - توب ميديا
+-----------------------------------------
+الاسم الكامل: ${requestData.name}
+رقم الهاتف المسجل: ${requestData.phone}
+البريد الإلكتروني المسجل: ${requestData.email}
+سبب الحذف: ${requestData.reason}
+رقم المرجع: ${requestData.ref}
+تاريخ الطلب: ${new Date().toLocaleDateString('ar-YE')}
+
+أؤكد رغبتي في حذف حسابي نهائياً وجميع البيانات المرتبطة به من خوادم توب ميديا.`;
+      } else {
+        return `Top Media - Account Deletion Request
+-----------------------------------------
+Full Name: ${requestData.name}
+Registered Phone: ${requestData.phone}
+Registered Email: ${requestData.email}
+Reason for Deletion: ${requestData.reason}
+Reference ID: ${requestData.ref}
+Date: ${new Date().toLocaleDateString('en-US')}
+
+I confirm that I wish to permanently delete my account and all associated data from Top Media servers.`;
+      }
+    }
+
+    function copyRequestDetails() {
+      const text = getFormattedText();
+      navigator.clipboard.writeText(text).then(() => {
+        const isAr = document.body.className === 'lang-ar';
+        alert(isAr ? 'تم نسخ تفاصيل الطلب بنجاح!' : 'Request details copied to clipboard successfully!');
+      }).catch(err => {
+        console.error('Failed to copy text: ', err);
+      });
+    }
+
+    function sendEmailRequest() {
+      const recipient = 'me@osamazayed.com';
+      const subject = encodeURIComponent(`Account Deletion Request [${requestData.ref}] - Top Media`);
+      const body = encodeURIComponent(getFormattedText());
+      window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+    }
+
+    function resetForm() {
+      document.getElementById('deletionForm').reset();
+      document.getElementById('group-reason-text').style.display = 'none';
+      document.getElementById('deletionForm').style.display = 'block';
+      document.getElementById('successContainer').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
