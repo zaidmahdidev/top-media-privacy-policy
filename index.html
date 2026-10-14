@@ -3,38 +3,147 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>سياسة الخصوصية - توب ميديا</title>
+  <title>سياسة الخصوصية - توب ميديا | Privacy Policy - Top Media</title>
+  <!-- Google Fonts: Cairo for Arabic, Inter for English -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       color-scheme: light;
-      --bg: #f7f8fa;
-      --paper: #ffffff;
-      --text: #1f2933;
-      --muted: #596675;
-      --line: #d9dee5;
-      --brand: #117a45;
-      --brand-soft: #e8f5ee;
+      --brand: #10B981;
+      --brand-hover: #059669;
+      --brand-soft: #ECFDF5;
+      --brand-border: rgba(16, 185, 129, 0.2);
+      --accent: #F59E0B;
+      --cyan: #06B6D4;
+      --success: #10B981;
+      --warning: #F59E0B;
+      --error: #EF4444;
+      --bg: #F8FAFC;
+      --bg-gradient: radial-gradient(circle at 10% 20%, rgba(16, 185, 129, 0.06) 0%, rgba(248, 250, 252, 1) 90%);
+      --paper: rgba(255, 255, 255, 0.92);
+      --paper-border: rgba(16, 185, 129, 0.14);
+      --text: #0F172A;
+      --muted: #64748B;
+      --line: #E2E8F0;
+      --glow: 0 12px 36px rgba(16, 185, 129, 0.08);
+      --radius: 16px;
+      --radius-sm: 10px;
     }
 
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      margin: 0;
       background: var(--bg);
+      background-image: var(--bg-gradient);
       color: var(--text);
-      font-family: Arial, "Tahoma", sans-serif;
-      line-height: 1.8;
+      font-family: 'Cairo', Arial, sans-serif;
+      line-height: 1.85;
+      min-height: 100vh;
+    }
+
+    /* Top Glass Header */
+    header {
+      background: rgba(255, 255, 255, 0.82);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--paper-border);
+      padding: 16px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+    }
+
+    .header-container {
+      max-width: 980px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .brand-logo {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+      border-radius: 12px;
+      padding: 9px;
+      box-shadow: 0 6px 16px rgba(16, 185, 129, 0.28);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .brand-logo svg {
+      width: 100%;
+      height: 100%;
+      fill: none;
+      stroke: #ffffff;
+      stroke-width: 2.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .brand-title {
+      font-size: 20px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #059669 0%, #10B981 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -0.3px;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-delete {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      background: var(--brand-soft);
+      color: #059669;
+      border: 1px solid var(--brand-border);
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 700;
+      transition: all 0.2s ease;
+    }
+
+    .btn-delete:hover {
+      background: #D1FAE5;
+      color: #047857;
+      transform: translateY(-1px);
     }
 
     main {
       width: min(980px, calc(100% - 32px));
-      margin: 32px auto;
+      margin: 36px auto 60px;
       background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 28px;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--paper-border);
+      border-radius: var(--radius);
+      padding: 36px 40px;
+      box-shadow: var(--glow);
     }
 
     h1, h2, h3 {
@@ -44,319 +153,421 @@
     }
 
     h1 {
-      font-size: 30px;
+      font-size: 28px;
+      font-weight: 800;
+      color: #059669;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
     h2 {
-      margin-top: 28px;
-      padding-top: 20px;
+      margin-top: 36px;
+      padding-top: 24px;
       border-top: 1px solid var(--line);
-      font-size: 22px;
+      font-size: 21px;
+      font-weight: 700;
+      color: #1E293B;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    h2::before {
+      content: "";
+      display: inline-block;
+      width: 4px;
+      height: 20px;
+      background: var(--brand);
+      border-radius: 4px;
     }
 
     h3 {
-      margin-top: 18px;
-      font-size: 18px;
+      margin-top: 22px;
+      font-size: 17px;
+      font-weight: 700;
+      color: #334155;
     }
 
     p {
-      margin: 0 0 12px;
+      margin: 0 0 14px;
+      color: #334155;
     }
 
     ul {
-      margin: 0 0 16px;
+      margin: 0 0 20px;
       padding-inline-start: 24px;
     }
 
     li {
-      margin-bottom: 6px;
+      margin-bottom: 8px;
+      color: #334155;
     }
 
     a {
-      color: var(--brand);
-      overflow-wrap: anywhere;
+      color: #059669;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      font-weight: 600;
+      transition: color 0.15s ease;
+    }
+
+    a:hover {
+      color: var(--brand-hover);
+    }
+
+    .meta-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 14px 0 20px;
+    }
+
+    .meta-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 5px 12px;
+      background: #F1F5F9;
+      border: 1px solid #CBD5E1;
+      border-radius: 20px;
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 600;
     }
 
     .summary {
-      margin: 18px 0 24px;
-      padding: 16px;
-      background: var(--brand-soft);
-      border: 1px solid #c9e7d7;
-      border-radius: 8px;
+      margin: 22px 0 28px;
+      padding: 20px 24px;
+      background: linear-gradient(135deg, rgba(236, 253, 245, 0.8) 0%, rgba(240, 253, 250, 0.7) 100%);
+      border: 1px solid var(--brand-border);
+      border-radius: var(--radius-sm);
+      border-right: 4px solid var(--brand);
     }
 
-    .meta {
-      color: var(--muted);
-      font-size: 14px;
+    .summary p {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 500;
+      color: #1E293B;
     }
 
     .english {
       direction: ltr;
       text-align: left;
-      margin-top: 36px;
-      padding-top: 28px;
-      border-top: 2px solid var(--brand);
-      font-family: Arial, Helvetica, sans-serif;
+      margin-top: 48px;
+      padding-top: 36px;
+      border-top: 2px dashed var(--brand-border);
+      font-family: 'Inter', Arial, sans-serif;
+    }
+
+    .english h2::before {
+      margin-right: 8px;
+    }
+
+    .contact-card {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: var(--radius-sm);
+      padding: 18px 22px;
+      margin-top: 14px;
+    }
+
+    .contact-card ul {
+      margin-bottom: 0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 24px;
+      color: var(--muted);
+      font-size: 14px;
+      border-top: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.5);
     }
 
     @media (max-width: 640px) {
       main {
-        width: calc(100% - 20px);
-        margin: 10px auto;
-        padding: 18px;
+        width: calc(100% - 24px);
+        margin: 16px auto 36px;
+        padding: 22px 20px;
       }
 
       h1 {
-        font-size: 24px;
+        font-size: 23px;
+      }
+
+      h2 {
+        font-size: 18px;
+      }
+
+      .btn-delete {
+        padding: 6px 12px;
+        font-size: 12px;
       }
     }
   </style>
 </head>
 <body>
+
+<header>
+  <div class="header-container">
+    <a href="#" class="brand">
+      <div class="brand-logo">
+        <!-- Shopping / Package Icon -->
+        <svg viewBox="0 0 24 24">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 0 1-8 0"/>
+        </svg>
+      </div>
+      <span class="brand-title">توب ميديا | Top Media</span>
+    </a>
+
+    <div class="header-actions">
+      <a href="delete-account.html" class="btn-delete">
+        <span>طلب حذف الحساب</span>
+      </a>
+    </div>
+  </div>
+</header>
+
 <main>
+  <!-- ARABIC SECTION -->
   <section aria-labelledby="arabic-title">
     <h1 id="arabic-title">سياسة الخصوصية - توب ميديا</h1>
-    <p class="meta">اسم التطبيق: توب ميديا</p>
-    <p class="meta">معرف الحزمة: com.zaid.topmedia</p>
-    <p class="meta">آخر تحديث: 23 يونيو 2026</p>
+    
+    <div class="meta-badges">
+      <span class="meta-badge">اسم التطبيق: توب ميديا (Top Media)</span>
+      <span class="meta-badge">معرّف الحزمة: com.zaid.topmedia</span>
+      <span class="meta-badge">آخر تحديث: 14 أكتوبر 2026</span>
+    </div>
 
     <div class="summary">
       <p>
-        توضح هذه السياسة كيف يجمع تطبيق توب ميديا بيانات المستخدمين ويستخدمها
-        لتصفح وشراء المنتجات (التحف والهدايا)، تقديم الطلبات، إدارة العنوان والتوصيل،
-        إرسال الإشعارات، ومعالجة المدفوعات.
+        توضح هذه السياسة كيفية جمع واستخدام وحماية تطبيق <strong>توب ميديا (Top Media)</strong> لبيانات المستخدمين لتوفير تجربة تسوق إلكترونية متكاملة لتصفح وشراء المنتجات المتنوعة والهدايا والتحف والمقتنيات، وإدارة العناوين، والتوصيل، ومعالجة المدفوعات، وإرسال الإشعارات.
       </p>
     </div>
 
     <h2>البيانات التي نجمعها</h2>
 
-    <h3>بيانات الحساب والهوية</h3>
+    <h3>1. بيانات الحساب والهوية</h3>
     <ul>
-      <li>الاسم الكامل ورقم الهاتف والبريد الإلكتروني.</li>
-      <li>معرف حساب المستخدم وحالة الحساب.</li>
-      <li>بيانات تسجيل الدخول اللازمة للوصول إلى الحساب.</li>
-      <li>الصورة الشخصية التي يرفعها المستخدم عند الرغبة.</li>
+      <li>الاسم الكامل، رقم الهاتف، والبريد الإلكتروني.</li>
+      <li>رمز المستخدم أو معرف الحساب الفريد وحالة الحساب.</li>
+      <li>بيانات تسجيل الدخول ورموز المصادقة الآمنة للوصول للحساب.</li>
+      <li>الصورة الشخصية للملف عند اختيار رفعها من قبل المستخدم.</li>
     </ul>
 
-    <h3>بيانات الموقع</h3>
+    <h3>2. بيانات الموقع الجغرافي</h3>
     <p>
-      يجمع التطبيق بيانات الموقع الجغرافي التقريبية أو الدقيقة عندما يستخدم المستخدم
-      التطبيق لتحديد عنوان التوصيل. لا يجمع التطبيق الموقع في الخلفية أو عند إغلاقه.
+      يطلب التطبيق إذن الوصول إلى بيانات الموقع الجغرافي التقريبية أو الدقيقة <strong>فقط أثناء استخدام التطبيق</strong> لتحديد وتأكيد عنوان توصيل الطلبات بدقة. التطبيق <strong>لا يجمع أو يتتبع</strong> موقعك الجغرافي في الخلفية عند إغلاق التطبيق.
     </p>
-    <p>تستخدم بيانات الموقع للأغراض التالية:</p>
+    <p>تُستخدم بيانات الموقع للأغراض التالية فقط:</p>
     <ul>
-      <li>تحديد عنوان التوصيل الحالي للمستخدم.</li>
-      <li>اقتراح العناوين القريبة.</li>
-      <li>تحسين دقة عملية التوصيل.</li>
+      <li>تحديد وتثبيت عنوان التوصيل الفعلي على الخريطة لحساب الشحن بدقة.</li>
+      <li>اقتراح وتسهيل حفظ العناوين المتكررة (مثل المنزل أو العمل).</li>
+      <li>تحسين سرعة ودقة توصيل الطلبات إليك دون أخطاء.</li>
     </ul>
 
-    <h3>بيانات الطلبات والمشتريات</h3>
+    <h3>3. بيانات الطلبات والمشتريات</h3>
     <ul>
-      <li>المنتجات المطلوبة والكميات والأسعار (التحف والهدايا).</li>
-      <li>عناوين التوصيل وملاحظات الطلب.</li>
-      <li>مبالغ الدفع وطرق الدفع المستخدمة.</li>
-      <li>سجل الطلبات السابقة والمفضلة.</li>
-      <li>التقييمات والمراجعات على المنتجات.</li>
+      <li>المنتجات المضافة للسلة والمشتراة (الكميات، الأسعار، ومواصفات المنتجات).</li>
+      <li>عناوين التوصيل، أوقات التسليم المفضلة، وملاحظات التوصيل.</li>
+      <li>طرق الدفع المستخدمة ومبالغ الفواتير وحالات السداد (لا نخزن بيانات البطاقات الائتمانية الحساسة مباشرة).</li>
+      <li>سجل الطلبات السابقة، قائمة المفضلة، والتقييمات والمراجعات المكتوبة.</li>
     </ul>
 
-    <h3>بيانات الإشعارات والجهاز</h3>
+    <h3>4. بيانات الإشعارات والجهاز</h3>
     <ul>
-      <li>رمز إشعارات Firebase Cloud Messaging لإرسال تحديثات الطلبات والتنبيهات.</li>
-      <li>حالة إذن الإشعارات وإعدادات تشغيلها.</li>
-      <li>معلومات تقنية مثل نوع الجهاز ونظام التشغيل وسجلات الأعطال.</li>
+      <li>رمز خدمة الإشعارات (Firebase Cloud Messaging Token) لإرسال تحديثات حالة الطلب، الشحن، والتنبيهات.</li>
+      <li>إعدادات وتفضيلات استلام التنبيهات.</li>
+      <li>معلومات تقنية أساسية تشمل نوع الجهاز، إصدار نظام التشغيل، وسجلات الأعطال لتحسين الأداء واستقرار التطبيق.</li>
     </ul>
 
-    <h3>بيانات الدعم الفني</h3>
+    <h3>5. بيانات خدمة العملاء والدعم الفني</h3>
     <ul>
-      <li>رسائل المحادثة المتعلقة بالطلبات.</li>
-      <li>طلبات الدعم والشكاوى التي يرسلها المستخدم.</li>
-      <li>سجل المراسلات مع فريق الدعم.</li>
+      <li>محتوى المحادثات والمراسلات مع فريق الدعم الفني والمتعلقة بالطلبات.</li>
+      <li>الشكاوى والملاحظات وسجل التذاكر لحل أي مشكلات تواجه العميل.</li>
     </ul>
 
-    <h2>كيف نستخدم البيانات</h2>
+    <h2>كيف نستخدم بياناتك</h2>
     <ul>
-      <li>تشغيل التطبيق وتوفير خدمات التسوق والشراء.</li>
-      <li>تقديم الطلبات وتحديث حالاتها وإتمام عمليات الشراء.</li>
-      <li>إرسال إشعارات الطلبات والتنبيهات والعروض الترويجية (حسب الإعدادات).</li>
-      <li>معالجة المدفوعات وإدارة المبالغ المستردة.</li>
-      <li>حماية الحسابات ومنع الاحتيال.</li>
-      <li>تحسين أداء التطبيق وإصلاح الأخطاء.</li>
-      <li>تحليل استخدام التطبيق لتطوير الخدمات.</li>
-      <li>الامتثال للمتطلبات القانونية عند الحاجة.</li>
+      <li>تمكينك من تصفح المنتجات وإضافتها إلى السلة وإتمام عمليات الشراء بسلاسة.</li>
+      <li>معالجة وتجهيز طلباتك وتحديث حالتها خطوة بخطوة حتى التوصيل.</li>
+      <li>إرسال الإشعارات الضرورية عن حالة الشحنات والمدفوعات والعروض الترويجية المختارة.</li>
+      <li>تأكيد الدفع وإدارة المبالغ المستردة عند الحاجة.</li>
+      <li>حماية حسابك من أي وصول غير مصرح به أو احتيال.</li>
+      <li>تحسين سرعة وأداء التطبيق وتصحيح الأخطاء التقنية.</li>
+      <li>الالتزام بالأنظمة والقوانين التجارية والمحاسبية المعمول بها.</li>
     </ul>
 
-    <h2>مشاركة البيانات</h2>
-    <p>لا نبيع بياناتك الشخصية. قد نشارك البيانات فقط عند الضرورة لتقديم الخدمة، مثل:</p>
+    <h2>مشاركة البيانات مع أطراف ثالثة</h2>
+    <p>نحن لا نقوم ببيع أو تأجير بياناتك الشخصية لأي جهة. نشارك البيانات الضرورية فقط لتقديم الخدمة:</p>
     <ul>
-      <li>مع المندوب: اسم المستخدم ورقم الهاتف والعنوان لتوصيل الطلب.</li>
-      <li>مع مزودي الخدمات التقنية: الاستضافة، الخرائط، الإشعارات، الدفع وتحليلات الأعطال.</li>
-      <li>مع الجهات القانونية عندما يكون ذلك مطلوبا بموجب القانون.</li>
+      <li><strong>مندوبي وشركات التوصيل:</strong> نشارك الاسم ورقم الهاتف والعنوان فقط لإيصال شحنتك بنجاح.</li>
+      <li><strong>مزودي الخدمات السحابية والتقنية:</strong> مثل خدمات الخرائط (Google Maps)، الاستضافة، والإشعارات (Firebase)، وبوابات الدفع الإلكتروني المعتمدة.</li>
+      <li><strong>الجهات القانونية:</strong> فقط عند وجود إلزام قانوني رسمي بموجب اللوائح والأنظمة.</li>
     </ul>
 
-    <h2>الصلاحيات التي يستخدمها التطبيق</h2>
+    <h2>الصلاحيات التي يطلبها التطبيق</h2>
     <ul>
-      <li>الموقع: لتحديد عنوان التوصيل أثناء استخدام التطبيق.</li>
-      <li>الإشعارات: لإرسال تنبيهات الطلبات والتحديثات والعروض.</li>
-      <li>الصور والكاميرا: لرفع الصور الشخصية أو صور المنتجات.</li>
-      <li>الإنترنت: للاتصال بخوادم التطبيق والخدمات.</li>
+      <li><strong>الموقع (Location):</strong> لتحديد عنوان التوصيل على الخريطة أثناء فتح التطبيق.</li>
+      <li><strong>الإشعارات (Notifications):</strong> لإرسال تنبيهات لحظية بتحديثات الطلبات والعروض الحصرية.</li>
+      <li><strong>الصور والملفات (Photos & Storage):</strong> عند رغبة المستخدم برفع صورة شخصية أو مشاركة صور مع الدعم.</li>
+      <li><strong>الإنترنت (Internet):</strong> للاتصال الآمن بخوادم التطبيق واستعراض الكتالوج والأسعار.</li>
     </ul>
 
-    <h2>الاحتفاظ بالبيانات والحذف</h2>
+    <h2>الاحتفاظ بالبيانات وحذف الحساب</h2>
     <p>
-      نحتفظ بالبيانات طالما كانت ضرورية لتقديم الخدمة، إدارة الحساب، حل النزاعات، المحاسبة،
-      والامتثال للمتطلبات القانونية. يمكن للمستخدم طلب حذف الحساب وبياناته من داخل التطبيق
-      أو عبر الانتقال مباشرة إلى <a href="delete-account.html">صفحة طلب حذف الحساب والبيانات</a>،
-      أو التواصل معنا، وقد نحتفظ ببعض السجلات عندما يكون ذلك مطلوبا قانونيا أو محاسبيا.
+      نحتفظ ببياناتك طالما كان حسابك نشطاً لتقديم الخدمة. يمكنك في أي وقت طلب حذف حسابك وكافة بياناتك الشخصية من داخل إعدادات التطبيق أو عبر التوجه مباشرة إلى صفحة:
+      <br>
+      👉 <a href="delete-account.html"><strong>صفحة طلب حذف الحساب والبيانات (Top Media Deletion Request)</strong></a>.
+    </p>
+    <p>
+      عند تقديم طلب الحذف، سيتم حذف معلومات ملفك الشخصي وعناوينك وسلتك نهائياً من خوادمنا، مع الاحتفاظ فقط بالسجلات المحاسبية والفواتير السابقة للمدة التي يفرضها القانون للأغراض الضريبية والمالية.
     </p>
 
-    <h2>أمان البيانات</h2>
+    <h2>أمان وحماية البيانات</h2>
     <p>
-      نستخدم إجراءات أمان مناسبة لحماية البيانات، ومنها تقييد الوصول للموظفين المخولين،
-      استخدام الاتصال الآمن، ومراقبة الأنظمة للحد من الوصول غير المصرح به.
+      نطبق أعلى معايير الحماية التقنية بما في ذلك التشفير الكامل لنقل البيانات (HTTPS / SSL/TLS)، وتأمين قواعد البيانات، وتقييد الصلاحيات لضمان عدم وصول أي شخص غير مخول لبياناتك.
     </p>
 
-    <h2>الأطفال</h2>
+    <h2>حماية خصوصية الأطفال</h2>
     <p>
-      التطبيق مخصص للمستخدمين من جميع الأعمار. لا نقوم عن قصد بجمع بيانات من أطفال
-      دون سن 13 عاما.
-    </p>
-
-    <h2>التغييرات على السياسة</h2>
-    <p>
-      قد نقوم بتحديث هذه السياسة عند تغيير خدماتنا أو متطلباتنا القانونية. سيتم نشر النسخة
-      الجديدة على هذه الصفحة مع تحديث تاريخ آخر تعديل.
+      تطبيق توب ميديا غير موجه للأطفال دون سن 13 عاماً، ولا نقوم عمداً بجمع أي بيانات من هذه الفئة العمرية.
     </p>
 
     <h2>التواصل معنا</h2>
-    <p>للاستفسارات أو طلب حذف البيانات، يمكن التواصل معنا عبر:</p>
-    <ul>
-      <li>البريد الإلكتروني: <a href="mailto:me@osamazayed.com">me@osamazayed.com</a></li>
-      <li>رقم الهاتف: <a href="tel:+967775561590">+967775561590</a></li>
-      <li>العنوان: Zubayri Street, Sana'a, Yemen</li>
-    </ul>
+    <div class="contact-card">
+      <p>لأي استفسار بخصوص سياسة الخصوصية أو بياناتك الشخصية، يسعدنا تواصلك مع فريقنا عبر:</p>
+      <ul>
+        <li>البريد الإلكتروني: <a href="mailto:zaidmhdi33@gmail.com">zaidmhdi33@gmail.com</a></li>
+        <li>الهاتف / واتساب الدعم: <a href="tel:+966559291894" dir="ltr">+966 55 929 1894</a></li>
+        <li>العنوان: الرياض، المملكة العربية السعودية</li>
+      </ul>
+    </div>
   </section>
 
+  <!-- ENGLISH SECTION -->
   <section class="english" lang="en" dir="ltr" aria-labelledby="english-title">
     <h1 id="english-title">Privacy Policy - Top Media</h1>
-    <p class="meta">App name: Top Media</p>
-    <p class="meta">Package name: com.zaid.topmedia</p>
-    <p class="meta">Last updated: June 23, 2026</p>
+    
+    <div class="meta-badges">
+      <span class="meta-badge">App Name: Top Media</span>
+      <span class="meta-badge">Package ID: com.zaid.topmedia</span>
+      <span class="meta-badge">Last Updated: October 14, 2026</span>
+    </div>
 
     <div class="summary">
       <p>
-        This Privacy Policy explains how Top Media collects and uses user data to provide
-        browsing and purchasing of gifts and antiques, order placement, address and delivery
-        management, notifications, and payment processing.
+        This Privacy Policy describes how <strong>Top Media</strong> collects, uses, and safeguards user information to provide an e-commerce platform for gifts, antiques, collectibles, general merchandise, order processing, delivery management, notifications, and secure payments.
       </p>
     </div>
 
     <h2>Information We Collect</h2>
 
-    <h3>Account and Identity Information</h3>
+    <h3>1. Account and Identity Information</h3>
     <ul>
       <li>Full name, phone number, and email address.</li>
-      <li>User account identifier and account status.</li>
-      <li>Login information needed to access the account.</li>
-      <li>Profile photo uploaded by the user (optional).</li>
+      <li>Unique user identifier and account status.</li>
+      <li>Authentication tokens and credentials required to secure your account.</li>
+      <li>Profile photo if you voluntarily choose to upload one.</li>
     </ul>
 
-    <h3>Location Data</h3>
+    <h3>2. Location Data</h3>
     <p>
-      The app collects approximate or precise location data when the user is using the app to
-      select a delivery address. The app does not collect location in the background or when closed.
+      Top Media requests access to approximate or precise location data <strong>strictly while the app is in foreground use</strong> to pinpoint your delivery address accurately on the map. The app <strong>does not</strong> collect, track, or monitor your location in the background.
     </p>
-    <p>Location data is used to:</p>
+    <p>Location data is used solely to:</p>
     <ul>
-      <li>Determine the user's current delivery address.</li>
-      <li>Suggest nearby addresses.</li>
-      <li>Improve delivery accuracy.</li>
+      <li>Pin your exact delivery location on the map for delivery fee calculation.</li>
+      <li>Suggest and save frequent shipping addresses (e.g., Home or Office).</li>
+      <li>Ensure timely and accurate delivery of your orders.</li>
     </ul>
 
-    <h3>Order and Purchase Data</h3>
+    <h3>3. Orders and Purchasing Information</h3>
     <ul>
-      <li>Ordered products, quantities, and prices (gifts and antiques).</li>
-      <li>Delivery addresses and order notes.</li>
-      <li>Payment amounts and payment methods used.</li>
-      <li>Past order history and favorites.</li>
-      <li>Product ratings and reviews.</li>
+      <li>Purchased products, quantities, prices, and specifications.</li>
+      <li>Delivery addresses, scheduled delivery times, and special instructions.</li>
+      <li>Payment method types, transaction amounts, and invoice records (we do not directly store sensitive credit card numbers).</li>
+      <li>Order history, saved wishlist items, ratings, and reviews.</li>
     </ul>
 
-    <h3>Notification and Device Data</h3>
+    <h3>4. Device and Notification Data</h3>
     <ul>
-      <li>Firebase Cloud Messaging token for order updates and alerts.</li>
-      <li>Notification permission status and settings.</li>
-      <li>Technical information such as device type, operating system, and crash logs.</li>
+      <li>Firebase Cloud Messaging token to deliver order updates, shipment progress, and alerts.</li>
+      <li>Notification preferences and alert settings.</li>
+      <li>Technical data such as device model, OS version, and diagnostic crash logs for performance improvement.</li>
     </ul>
 
-    <h3>Support Data</h3>
+    <h3>5. Customer Support Information</h3>
     <ul>
-      <li>Order-related chat messages.</li>
-      <li>Support requests and complaints submitted by the user.</li>
-      <li>Communication history with the support team.</li>
+      <li>Order-related customer support chat messages.</li>
+      <li>Support tickets, feedback, and customer inquiries.</li>
     </ul>
 
-    <h2>How We Use Information</h2>
+    <h2>How We Use Your Information</h2>
     <ul>
-      <li>Operate the app and provide shopping and purchasing services.</li>
-      <li>Place orders, update order status, and complete purchases.</li>
-      <li>Send order notifications, alerts, and promotional offers (based on settings).</li>
-      <li>Process payments and manage refunds.</li>
-      <li>Protect accounts and prevent fraud.</li>
-      <li>Improve app performance and fix errors.</li>
-      <li>Analyze app usage to improve services.</li>
-      <li>Comply with legal requirements when needed.</li>
+      <li>Provide smooth browsing, cart management, and seamless checkout.</li>
+      <li>Process, fulfill, and update the status of your orders.</li>
+      <li>Send essential transactional notifications, delivery alerts, and promotional announcements.</li>
+      <li>Process payments and manage refunds when requested.</li>
+      <li>Protect user accounts and prevent fraudulent activity.</li>
+      <li>Improve app reliability, speed, and design features.</li>
+      <li>Comply with applicable legal, accounting, and regulatory obligations.</li>
     </ul>
 
     <h2>Data Sharing</h2>
-    <p>We do not sell personal data. We may share data only when necessary to provide the service, including:</p>
+    <p>We do not sell or rent your personal information. We share only necessary data with:</p>
     <ul>
-      <li>With the delivery person: user name, phone number, and address to deliver the order.</li>
-      <li>With service providers: hosting, maps, notifications, payments, and crash analytics.</li>
-      <li>With legal authorities when required by law.</li>
+      <li><strong>Delivery Partners & Couriers:</strong> Customer name, phone number, and delivery address to complete order delivery.</li>
+      <li><strong>Service Providers:</strong> Cloud hosting, Google Maps SDK, Firebase push services, and authorized payment gateways.</li>
+      <li><strong>Legal Authorities:</strong> Only when officially required under applicable law.</li>
     </ul>
 
     <h2>App Permissions</h2>
     <ul>
-      <li>Location: used to select delivery address while using the app.</li>
-      <li>Notifications: used to send order alerts, updates, and offers.</li>
-      <li>Photos and camera: used for profile photos or product images.</li>
-      <li>Internet: used to connect to app servers and services.</li>
+      <li><strong>Location:</strong> Used to select and confirm delivery address while using the app.</li>
+      <li><strong>Notifications:</strong> Used to send timely delivery status updates and offers.</li>
+      <li><strong>Photos & Storage:</strong> Used if you choose to set a profile picture or attach images for support.</li>
+      <li><strong>Internet:</strong> Required for secure communication with our cloud backends.</li>
     </ul>
 
-    <h2>Retention and Deletion</h2>
+    <h2>Data Retention and Account Deletion</h2>
     <p>
-      We keep data for as long as needed to provide the service, manage accounts, resolve disputes,
-      maintain accounting records, and comply with legal requirements. Users can request account and
-      data deletion from within the app, by visiting our <a href="delete-account.html">Account Deletion Request Page</a>, or by contacting us. Some records may be retained when legally
-      or financially required.
+      We retain your data as long as your account is active. You may request the permanent deletion of your account and personal data at any time directly through the app settings or via our web portal:
+      <br>
+      👉 <a href="delete-account.html"><strong>Top Media Account & Data Deletion Portal</strong></a>.
+    </p>
+    <p>
+      Upon receiving your request, your personal profile, addresses, and carts will be permanently removed, except for past fiscal/tax invoices which are legally mandated to be retained for statutory periods.
     </p>
 
-    <h2>Security</h2>
+    <h2>Data Security</h2>
     <p>
-      We use appropriate safeguards to protect data, including access restrictions, secure
-      communication, and system monitoring to reduce unauthorized access.
+      We employ industry-standard encryption protocols (TLS/SSL via HTTPS), robust access controls, and active system auditing to keep your personal data safe.
     </p>
 
-    <h2>Children</h2>
+    <h2>Children's Privacy</h2>
     <p>
-      The app is intended for users of all ages. We do not knowingly collect data from children
-      under 13 years of age.
-    </p>
-
-    <h2>Changes to This Policy</h2>
-    <p>
-      We may update this policy when our services or legal requirements change. The updated version
-      will be posted on this page with a new last updated date.
+      Top Media is not intended for children under the age of 13, and we do not knowingly collect personal data from minors.
     </p>
 
     <h2>Contact Us</h2>
-    <p>For privacy questions or data deletion requests, contact us at:</p>
-    <ul>
-      <li>Email: <a href="mailto:me@osamazayed.com">me@osamazayed.com</a></li>
-      <li>Phone: <a href="tel:+967775561590">+967775561590</a></li>
-      <li>Address: Zubayri Street, Sana'a, Yemen</li>
-    </ul>
+    <div class="contact-card">
+      <p>If you have any questions about this Privacy Policy or wish to exercise your data rights, please contact us at:</p>
+      <ul>
+        <li>Email: <a href="mailto:zaidmhdi33@gmail.com">zaidmhdi33@gmail.com</a></li>
+        <li>Phone / WhatsApp: <a href="tel:+966559291894">+966 55 929 1894</a></li>
+        <li>Address: Riyadh, Kingdom of Saudi Arabia</li>
+      </ul>
+    </div>
   </section>
 </main>
+
+<footer>
+  <p>&copy; 2026 توب ميديا (Top Media). جميع الحقوق محفوظة | All rights reserved.</p>
+</footer>
+
 </body>
 </html>

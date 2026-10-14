@@ -11,21 +11,21 @@
   
   <style>
     :root {
-      --primary: #117a45;
-      --primary-rgb: 17, 122, 69;
-      --primary-hover: #0c5b33;
-      --accent: #faae18;
-      --secondary: #006a80;
-      --bg: #f4f7f5;
-      --bg-gradient: linear-gradient(135deg, #f4f7f5 0%, #e8f5ee 100%);
-      --card-bg: rgba(255, 255, 255, 0.9);
-      --text-main: #1f2933;
-      --text-muted: #596675;
-      --border: rgba(17, 122, 69, 0.12);
-      --error: #e84d4f;
-      --success: #117a45;
+      --primary: #10B981;
+      --primary-rgb: 16, 185, 129;
+      --primary-hover: #059669;
+      --accent: #F59E0B;
+      --secondary: #059669;
+      --bg: #F8FAFC;
+      --bg-gradient: radial-gradient(circle at 10% 20%, rgba(16, 185, 129, 0.06) 0%, rgba(248, 250, 252, 1) 90%);
+      --card-bg: rgba(255, 255, 255, 0.92);
+      --text-main: #0F172A;
+      --text-muted: #64748B;
+      --border: rgba(16, 185, 129, 0.16);
+      --error: #EF4444;
+      --success: #10B981;
       --shadow-sm: 0 4px 10px rgba(0, 0, 0, 0.02);
-      --shadow-md: 0 10px 40px rgba(17, 122, 69, 0.08);
+      --shadow-md: 0 12px 36px rgba(16, 185, 129, 0.09);
       --radius: 16px;
       --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
@@ -90,7 +90,7 @@
       object-fit: contain;
       border-radius: 50%;
       border: 2px solid var(--primary);
-      background: #e8f5ee;
+      background: #ECFDF5;
       padding: 4px;
     }
 
@@ -113,7 +113,7 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      box-shadow: 0 4px 12px rgba(17, 122, 69, 0.2);
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
     }
 
     .lang-toggle-btn:hover {
@@ -276,7 +276,7 @@
     .form-group textarea:focus,
     .form-group select:focus {
       border-color: var(--primary);
-      box-shadow: 0 0 0 4px rgba(17, 122, 69, 0.12);
+      box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.12);
       outline: none;
     }
 
@@ -337,13 +337,13 @@
       justify-content: center;
       align-items: center;
       gap: 10px;
-      box-shadow: 0 6px 18px rgba(17, 122, 69, 0.25);
+      box-shadow: 0 6px 18px rgba(16, 185, 129, 0.25);
     }
 
     .btn-submit:hover {
       background: var(--primary-hover);
       transform: translateY(-2px);
-      box-shadow: 0 8px 22px rgba(17, 122, 69, 0.3);
+      box-shadow: 0 8px 22px rgba(16, 185, 129, 0.3);
     }
 
     .btn-submit:active {
@@ -365,7 +365,7 @@
     .success-icon {
       width: 72px;
       height: 72px;
-      background: #e8f5ee;
+      background: #ECFDF5;
       color: var(--primary);
       border-radius: 50%;
       display: flex;
@@ -373,7 +373,7 @@
       justify-content: center;
       margin: 0 auto 24px;
       font-size: 36px;
-      box-shadow: 0 8px 20px rgba(17, 122, 69, 0.15);
+      box-shadow: 0 8px 20px rgba(16, 185, 129, 0.15);
     }
 
     .success-title {
@@ -453,7 +453,7 @@
     }
 
     .btn-secondary:hover {
-      background: #e8f5ee;
+      background: #ECFDF5;
     }
 
     .btn-email {
@@ -470,11 +470,11 @@
       justify-content: center;
       align-items: center;
       gap: 8px;
-      box-shadow: 0 4px 12px rgba(0, 106, 128, 0.2);
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
     }
 
     .btn-email:hover {
-      background: #005668;
+      background: #047857;
       transform: translateY(-2px);
     }
 
@@ -547,13 +547,13 @@
     <div class="header-container">
       <a href="index.html" class="brand">
         <!-- We use an elegant SVG icon representation of the Gazelle/Antelope (الظبي) or App Icon -->
-        <svg class="brand-logo" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="50" cy="50" r="46" fill="#117a45" fill-opacity="0.1" stroke="#117a45" stroke-width="3"/>
-          <path d="M38 60C38 45 42 32 50 30C54 28 58 35 56 40C52 48 48 55 48 60" stroke="#117a45" stroke-width="4" stroke-linecap="round"/>
-          <path d="M50 30C52 22 55 14 54 10C50 12 48 22 46 28" stroke="#1fa660" stroke-width="3" stroke-linecap="round"/>
-          <path d="M50 30C56 20 60 14 58 10C54 12 52 22 50 28" stroke="#faae18" stroke-width="3" stroke-linecap="round"/>
-          <circle cx="50" cy="45" r="3" fill="#117a45"/>
-        </svg>
+        <div class="brand-logo" style="width:44px;height:44px;background:linear-gradient(135deg, #10B981 0%, #059669 100%);border-radius:12px;padding:9px;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(16,185,129,0.25);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:100%;height:100%;">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 0 1-8 0"/>
+          </svg>
+        </div>
         <span class="brand-title" lang="ar">توب ميديا</span>
         <span class="brand-title" lang="en">Top Media</span>
       </a>
@@ -646,7 +646,7 @@
             <span lang="ar">رقم الهاتف المسجل *</span>
             <span lang="en">Registered Phone Number *</span>
           </label>
-          <input type="tel" id="input-phone" required placeholder="مثال: 967770000000+ / e.g. +967770000000">
+          <input type="tel" id="input-phone" required placeholder="مثال: +966550000000 / e.g. +966550000000">
           <span class="error-msg" lang="ar">يرجى إدخال رقم الهاتف المسجل بشكل صحيح (مع رمز الدولة).</span>
           <span class="error-msg" lang="en">Please enter a valid registered phone number (with country code).</span>
         </div>
@@ -772,11 +772,15 @@
   </main>
 
   <footer>
+    <p style="margin-bottom: 8px; font-size: 13px;">
+      <span lang="ar">للمساعدة المباشرة: <a href="mailto:zaidmhdi33@gmail.com">zaidmhdi33@gmail.com</a> &bull; <a href="tel:+966559291894" dir="ltr">+966 55 929 1894</a> (الرياض، المملكة العربية السعودية)</span>
+      <span lang="en">Direct Support: <a href="mailto:zaidmhdi33@gmail.com">zaidmhdi33@gmail.com</a> &bull; <a href="tel:+966559291894">+966 55 929 1894</a> (Riyadh, Saudi Arabia)</span>
+    </p>
     <p>
       &copy; 2026 <span lang="ar">تطبيق توب ميديا. جميع الحقوق محفوظة.</span><span lang="en">Top Media App. All rights reserved.</span>
       <span class="footer-divider">|</span>
-      <a href="privacy-policy.html" target="_blank" lang="ar">سياسة الخصوصية</a>
-      <a href="privacy-policy.html" target="_blank" lang="en">Privacy Policy</a>
+      <a href="index.html" target="_blank" lang="ar">سياسة الخصوصية</a>
+      <a href="index.html" target="_blank" lang="en">Privacy Policy</a>
     </p>
   </footer>
 
@@ -948,7 +952,7 @@ I confirm that I wish to permanently delete my account and all associated data f
     }
 
     function sendEmailRequest() {
-      const recipient = 'me@osamazayed.com';
+      const recipient = 'zaidmhdi33@gmail.com';
       const subject = encodeURIComponent(`Account Deletion Request [${requestData.ref}] - Top Media`);
       const body = encodeURIComponent(getFormattedText());
       window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
